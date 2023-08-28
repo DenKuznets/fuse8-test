@@ -3,9 +3,12 @@ import styled from "styled-components";
 const SearchStyled = styled.div`
     /* height: 6rem; */
     position: relative;
-    margin-top: 8rem;
     width: 100%;
     max-width: 39rem;
+    margin-top: 3rem;
+    @media only screen and (min-width: 1024px) {
+        margin-top: 8rem;
+    }
 `;
 
 const Input = styled.input`

@@ -5,6 +5,7 @@ const ContainerStyled = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 0 1rem 1rem;
 `;
 
 interface ContainerProps {

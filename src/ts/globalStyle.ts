@@ -79,8 +79,7 @@ select {
   /* END OF GLOBAL RESET */
 
   body {
-    font-family: 'Fira Sans', sans-serif;;
-    padding:0 1rem;
+    font-family: 'Fira Sans', sans-serif;
   }
 `;
 
