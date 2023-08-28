@@ -1,0 +1,52 @@
+import styled from "styled-components";
+
+const SearchStyled = styled.div`
+    /* height: 6rem; */
+    position: relative;
+    margin-top: 8rem;
+    width: 100%;
+    max-width: 39rem;
+`;
+
+const Input = styled.input`
+    border: none;
+    filter: drop-shadow(0px 7px 12px rgba(100, 100, 111, 0.2));
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 1.19rem 2.25rem 1.31rem;
+    color: #656ec2;
+    min-width: 0;
+    width: 100%;
+    &::placeholder {
+        color: #656ec27c;
+    }
+    &:focus {
+        outline: 1px solid #8f94c036;
+    }
+`;
+
+const Counter = styled.div`
+    padding: 1.19rem 2.25rem;
+    color: #282626;
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    /* width: 100%; */
+    /* top: 0; */
+`;
+
+const Search = () => {
+    return (
+        <SearchStyled>
+            <Input type="text" placeholder="Search jokes..." />
+            <Counter>Found jokes: {"0"}</Counter>
+        </SearchStyled>
+    );
+};
+
+export default Search;

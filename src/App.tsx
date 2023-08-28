@@ -1,7 +1,8 @@
 import { useState } from "react";
 import GlobalStyle from "./ts/globalStyle";
-import Input from "./components/Input";
 import Container from "./components/Container";
+import Results from "./components/Results";
+import Search from "./components/Search";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -10,7 +11,8 @@ function App() {
         <>
             <GlobalStyle />
             <Container>
-                <Input />
+                <Search />
+                <Results />
             </Container>
         </>
     );
