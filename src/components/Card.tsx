@@ -5,6 +5,7 @@ interface Props {
 }
 
 const CardStyled = styled.div`
+    height: 100%;
     padding: 1rem;
     box-shadow: 0px 7px 25px 0px rgba(100, 100, 111, 0.2);
     @media only screen and (min-width: 1024px) {
