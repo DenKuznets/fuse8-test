@@ -13,6 +13,7 @@ const CardStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
     @media only screen and (min-width: 1024px) {
         padding: 2.5rem;
     }
@@ -47,7 +48,11 @@ const Footer = styled.div`
 
 export const Card = ({ $heading, data }: Props) => {
     return data ? (
-        <CardStyled>
+        <CardStyled
+            onClick={() =>
+                window.open(`https://api.chucknorris.io/jokes/${data.id}`)
+            }
+        >
             <Joke $heading={$heading}>{data.value}</Joke>
             <Footer>
                 <div className="id">{data.id}</div>
