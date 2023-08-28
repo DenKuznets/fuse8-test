@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery } from "../appSlice";
 import { RootState } from "../store";
+import { useEffect, useRef } from "react";
 
 const SearchStyled = styled.div`
     /* height: 6rem; */
@@ -42,17 +43,23 @@ const Counter = styled.div`
     font-weight: 400;
     line-height: normal;
     position: absolute;
-    /* width: 100%; */
-    /* top: 0; */
 `;
 
 const Search = () => {
     const searchQuery = useSelector((state: RootState) => state.app.value);
     const dispatch = useDispatch();
+    const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+    useEffect(() => {
+        if (inputRef && inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
 
     return (
         <SearchStyled>
             <Input
+                ref={inputRef}
                 value={searchQuery}
                 type="text"
                 placeholder="Search jokes..."
