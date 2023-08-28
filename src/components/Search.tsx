@@ -48,18 +48,22 @@ const Counter = styled.div`
 const Search = () => {
     const searchQuery = useSelector((state: RootState) => state.app.value);
     const dispatch = useDispatch();
-    const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    // const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-    useEffect(() => {
-        if (inputRef && inputRef.current) {
-            inputRef.current.focus();
-        }
-    }, []);
+
+    // useEffect(() => {
+    //     if (inputRef && inputRef.current) {
+    //         inputRef.current.focus();
+    //     }
+    // }, []);
+
+    
 
     return (
         <SearchStyled>
             <Input
-                ref={inputRef}
+                autoFocus
+                // ref={inputRef}
                 value={searchQuery}
                 type="text"
                 placeholder="Search jokes..."
