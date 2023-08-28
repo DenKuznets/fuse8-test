@@ -29,7 +29,6 @@ function App() {
     }, [searchQuery]);
 
     if (data) dispatch(setJokesNumber(data.data.result.length));
-    console.log(data.data.result);
     return (
         <>
             <GlobalStyle />
