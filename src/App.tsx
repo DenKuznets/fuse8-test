@@ -1,18 +1,32 @@
-import { useState } from "react";
 import GlobalStyle from "./ts/globalStyle";
 import Container from "./components/Container";
 import Results from "./components/Results";
 import Search from "./components/Search";
+import { useQuery } from "@tanstack/react-query";
+import { getJokes } from "./ts/api";
+
+
 
 function App() {
-    const [count, setCount] = useState(0);
+    const { isLoading, isError, data, error } = useQuery({
+        queryKey: ["jokes"],
+        queryFn: getJokes,
+    });
+
+    if (isLoading) {
+        return <span>Loading...</span>;
+    }
+
+    if (isError && error instanceof Error) {
+        return <span>Error: {error.message}</span>;
+    }
 
     return (
         <>
             <GlobalStyle />
             <Container>
                 <Search />
-                <Results />
+                {data && <Results data={data.data} />}
             </Container>
         </>
     );

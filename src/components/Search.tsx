@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchQuery } from "../appSlice";
+import { RootState } from "../store";
 
 const SearchStyled = styled.div`
     /* height: 6rem; */
@@ -44,9 +47,17 @@ const Counter = styled.div`
 `;
 
 const Search = () => {
+    const searchQuery = useSelector((state: RootState) => state.app.value);
+    const dispatch = useDispatch();
+
     return (
         <SearchStyled>
-            <Input type="text" placeholder="Search jokes..." />
+            <Input
+                value={searchQuery}
+                type="text"
+                placeholder="Search jokes..."
+                onChange={(e) => dispatch(setSearchQuery(e.target.value))}
+            />
             <Counter>Found jokes: {"0"}</Counter>
         </SearchStyled>
     );

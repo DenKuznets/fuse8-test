@@ -1,5 +1,10 @@
 import styled from "styled-components";
 import { Card } from "./Card";
+import { JokeType } from "../ts/types";
+
+interface ResultsType {
+    data: JokeType[];
+}
 
 const ResultsStyled = styled.div`
     margin-top: 6.25rem;
@@ -17,24 +22,20 @@ const ResultsStyled = styled.div`
     }
 `;
 
-const cards: JSX.Element[] = [];
-
-for (let index = 0; index < 12; index++) {
-    if (index < 2) {
-        cards.push(
+const Results = ({ data }: ResultsType) => {
+    // console.log(jokes);
+    const cards = data.map((joke, index) => {
+        return index < 2 ? (
             <div key={index} className="cell">
-                <Card $heading={true} />
+                <Card data={joke} $heading={true} />
+            </div>
+        ) : (
+            <div key={index} className="cell">
+                <Card data={joke} $heading={false} />
             </div>
         );
-    } else
-        cards.push(
-            <div key={index} className="cell">
-                <Card $heading={false} />
-            </div>
-        );
-}
+    });
 
-const Results = () => {
     return <ResultsStyled>{cards}</ResultsStyled>;
 };
 

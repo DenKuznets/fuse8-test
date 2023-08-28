@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { JokeType } from "../ts/types";
 
 interface Props {
     $heading: boolean;
+    data?: JokeType;
 }
 
 const CardStyled = styled.div`
@@ -39,20 +41,16 @@ const Footer = styled.div`
     }
 `;
 
-export const Card = ({ $heading }: Props) => {
-    return (
+export const Card = ({ $heading, data }: Props) => {
+    return data ? (
         <CardStyled>
-            <Joke $heading={$heading}>
-                The single most successful anti-smoking measure was a commercial
-                in the 1980's. In the commercial, there is a man smoking a
-                cigarette. A voice then exclaims "Smoking will kill you."
-                Nothing happens, until Chuck Norris blasts through the wall and
-                kills the man with a single round house kick.
-            </Joke>
+            <Joke $heading={$heading}>{data.value}</Joke>
             <Footer>
-                <div className="id">asdasdasdasdasd1231312</div>
-                <div className="date">24.05.2113</div>
+                <div className="id">{data.id}</div>
+                <div className="date">{data.created}</div>
             </Footer>
         </CardStyled>
+    ) : (
+        <CardStyled>Loading...</CardStyled>
     );
 };
