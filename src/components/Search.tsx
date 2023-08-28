@@ -2,10 +2,8 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery } from "../appSlice";
 import { RootState } from "../store";
-import { useEffect, useRef } from "react";
 
 const SearchStyled = styled.div`
-    /* height: 6rem; */
     position: relative;
     width: 100%;
     max-width: 39rem;
@@ -48,28 +46,20 @@ const Counter = styled.div`
 const Search = () => {
     const searchQuery = useSelector((state: RootState) => state.app.value);
     const dispatch = useDispatch();
-    // const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-
-
-    // useEffect(() => {
-    //     if (inputRef && inputRef.current) {
-    //         inputRef.current.focus();
-    //     }
-    // }, []);
-
-    
+    const jokesNumber = useSelector(
+        (state: RootState) => state.app.jokesNubmer
+    );
 
     return (
         <SearchStyled>
             <Input
                 autoFocus
-                // ref={inputRef}
                 value={searchQuery}
                 type="text"
                 placeholder="Search jokes..."
                 onChange={(e) => dispatch(setSearchQuery(e.target.value))}
             />
-            <Counter>Found jokes: {"0"}</Counter>
+            {jokesNumber && <Counter>Found jokes: {jokesNumber}</Counter>}
         </SearchStyled>
     );
 };

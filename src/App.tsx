@@ -4,10 +4,11 @@ import Results from "./components/Results";
 import Search from "./components/Search";
 import { useQuery } from "@tanstack/react-query";
 import { getApiJokes } from "./ts/api";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store";
 import { useEffect, useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
+import { setJokesNumber } from "./appSlice";
 
 function App() {
     const searchTimeOut = 1000;
@@ -18,6 +19,7 @@ function App() {
         queryFn: () => getApiJokes(filter),
         enabled: filter.length > 3,
     });
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const delaySearch = setTimeout(() => {
@@ -26,6 +28,8 @@ function App() {
         return () => clearTimeout(delaySearch);
     }, [searchQuery]);
 
+    if (data) dispatch(setJokesNumber(data.data.result.length));
+    console.log(data.data.result);
     return (
         <>
             <GlobalStyle />

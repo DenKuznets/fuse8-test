@@ -3,10 +3,12 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface AppState {
     value: string;
+    jokesNubmer: number | null;
 }
 
 const initialState: AppState = {
     value: "",
+    jokesNubmer: null,
 };
 
 export const appSlice = createSlice({
@@ -21,10 +23,13 @@ export const appSlice = createSlice({
             // console.log(action);
             state.value = action.payload;
         },
+        setJokesNumber: (state, action: PayloadAction<number>) => {
+            state.jokesNubmer = action.payload;
+        },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSearchQuery } = appSlice.actions;
+export const { setSearchQuery, setJokesNumber } = appSlice.actions;
 
 export default appSlice.reducer;

@@ -10,6 +10,9 @@ const CardStyled = styled.div`
     height: 100%;
     padding: 1rem;
     box-shadow: 0px 7px 25px 0px rgba(100, 100, 111, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     @media only screen and (min-width: 1024px) {
         padding: 2.5rem;
     }
@@ -32,8 +35,9 @@ const Footer = styled.div`
     font-weight: 400;
     line-height: normal;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    row-gap: 1.5rem;
+    gap: 1.5rem;
 
     @media only screen and (min-width: 1024px) {
         flex-direction: row;
@@ -47,7 +51,7 @@ export const Card = ({ $heading, data }: Props) => {
             <Joke $heading={$heading}>{data.value}</Joke>
             <Footer>
                 <div className="id">{data.id}</div>
-                <div className="date">{data.created}</div>
+                <div className="date">{data.created_at.split(" ")[0]}</div>
             </Footer>
         </CardStyled>
     ) : (
