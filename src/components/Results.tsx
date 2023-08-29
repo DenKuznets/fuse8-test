@@ -23,7 +23,6 @@ const ResultsStyled = styled.div`
 `;
 
 const Results = ({ data }: ResultsType) => {
-    // console.log(jokes);
     const cards = data.map((joke, index) => {
         return index < 2 ? (
             <div key={index} className="cell">
