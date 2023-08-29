@@ -59,7 +59,7 @@ const Search = () => {
                 placeholder="Search jokes..."
                 onChange={(e) => dispatch(setSearchQuery(e.target.value))}
             />
-            {jokesNumber && <Counter>Found jokes: {jokesNumber}</Counter>}
+            {jokesNumber !== null && <Counter>Found jokes: {jokesNumber}</Counter>}
         </SearchStyled>
     );
 };
