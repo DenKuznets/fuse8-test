@@ -1,0 +1,1 @@
+Refactor Results.tsx $heading= index < 2 true : false
