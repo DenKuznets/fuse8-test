@@ -17,7 +17,7 @@ function App() {
     const { isError, data, error, isInitialLoading } = useQuery({
         queryKey: ["jokes", filter],
         queryFn: () => getApiJokes(filter),
-        enabled: filter.length > 3,
+        enabled: filter.length > 3, //достаточно проверить наличие фильтра
     });
     const dispatch = useDispatch();
 
